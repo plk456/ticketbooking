@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>online ticked booking</title></head>
+<link rel="stylesheet" href="CSS.css">
+</head>
+ 		
+<body>  
+    <div class="first">
+<marquee><h1 style="background-color:yellow;">BUS TICKET BOOKING</h1></marquee>
+<form>
+<h3>
+ Name:<input id="name" type="text" placeholder="name"><br><br>
+PH.NO:<input id="ph-no" type="text" placeholder="number"><br><br>
+
+Email:<input id="email" type="email" placeholder="email"><br><br>
+
+<label for="from">From:</label>
+        <select id="from" name="from" >
+            <option value="pulivendula">pulivendula</option>
+            <option value="Hyderabad">Hyderabad</option>
+		    <option value="Bangluru">Bangluru</option>
+			<option value="Vijaywada">Vijaywada</option>
+            
+        </select><br><br>
+
+<label for="to">To:</label>
+        <select id="to" name="to" >
+            <option value="Hyderabad">Hyderabad</option>
+		    <option value="Bangluru">Bangluru</option>
+			<option value="Vijaywada">Vijaywada</option>
+            <option value="pulivendula">pulivendula</option>
+            
+        </select><br><br>
+
+<label for="passengers"> No.of Passengers:</label>
+        <input type="number" id="passengers" placeholder="no.of passengers" name="passengers" min="1" required><br><br>
+
+<label for="passengers name">passengers Name:</label>
+	    <input type="name" id="passengers-name" placeholder="passengers name" name="passengers name"><br><br>
+
+NO.of SEATS  :<input type="number" placeholder="no.of seats"><br><br>
+
+date sc	:<input type="date" placeholder="date"><br>
+
+ <button id="clearButton" onclick="getLocation()">Book Now</button>
+</h3>
+</div>
+</form>
+<script src="https://maps.googleapis.com/maps/api/js?key=xL2DfERhQw0gNNgcTAT1SjLDedq9z3W_yiTfo5E9Zy8"></script>
+    <script>
+
+const apiKey = "xL2DfERhQw0gNNgcTAT1SjLDedq9z3W_yiTfo5E9Zy8";
+const address = "1600 Amphitheatre Parkway, Mountain View, CA";
+const apiUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
+
+async function getLocation() {
+  const response = await fetch(apiUrl);
+  const data = await response.json();
+  console.log(data);
+
+  const lat = data.results[0].geometry.location.lat;
+  const lng = data.results[0].geometry.location.lng;
+
+  // Open Google Maps with the retrieved coordinates
+  const mapUrl = `https://www.google.com/maps/@?api=1&map_action=map&center=${lat},${lng}&zoom=15`;
+  window.open(mapUrl, '_blank');
+}
+
+getLocation();
+       
+</script>
+</body>
+</html>
