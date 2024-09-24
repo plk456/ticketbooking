@@ -1,0 +1,30 @@
+body{
+    
+    background-color: bisque;
+    text-align: left;
+    
+}
+@keyframes mymove {
+    50% {border-bottom: 15px solid aqua;}
+}
+.first {
+
+        background-image: url('tic1.jpeg');
+        background-repeat: no-repeat;
+        background-position-y: center;
+        background-size:700px auto; 
+        background-position-x: right;
+        background-repeat: no-repeat;
+        animation : mymove 3s infinite;
+        margin-top: 420px;
+        color: blue;
+        font-size:20px;
+    }
+h3{
+    border:8px solid black;
+    /*border-style: double;*/
+    border-radius: 15px;
+    padding: 50px;
+}
+    
+		
